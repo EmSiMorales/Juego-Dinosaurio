@@ -24,7 +24,9 @@ public class ENEMIGO : MonoBehaviour
         if (transform.position.x < posicionMinima.x)
         {
             transform.position = posicionInicial;
-        }
+            Velocidad += 1;
+
+        }   
     }
 
 }
