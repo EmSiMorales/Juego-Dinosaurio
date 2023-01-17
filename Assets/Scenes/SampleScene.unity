@@ -613,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camara: {fileID: 0}
   posicionMinima: {x: 0, y: 0}
-  Velocidad: 2
+  Velocidad: 4
   posicionInicial: {x: 0, y: 0, z: 0}
 --- !u!95 &1459993799
 Animator:
