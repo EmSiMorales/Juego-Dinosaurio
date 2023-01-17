@@ -28,12 +28,7 @@ public class PLAYER : MonoBehaviour
     {
         if (collision.transform.tag == "enemigo")
         {
-            vida -= 10;
-            Destroy(collision.gameObject);
-            if (vida <= 0)
-            {
-                Destroy(gameObject);
-            }
+            GameManager.Instancia.Perder();
         }
         animator.SetBool("Salto", false);
     }
