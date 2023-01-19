@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int mejorPuntuacion, puntuacionActual;
     [SerializeField] GameObject personaje, enemigo, boton, texto;
     [SerializeField] ENEMIGO Enemigo;
+    [SerializeField] public float tiempo = 0;
+    [SerializeField] TMP_Text textoTiempo;
+    [SerializeField] bool PararTiempo;
     // Start is called before the first frame update
 
     private void Awake()
@@ -40,6 +44,8 @@ public class GameManager : MonoBehaviour
         texto.SetActive(false);
         puntuacionActual = 0;
         Enemigo.Reiniciar();
+        PararTiempo = false;
+        tiempo = 0;
     }
     public void Perder()
     {
@@ -47,6 +53,7 @@ public class GameManager : MonoBehaviour
         enemigo.SetActive(false);
         boton.SetActive(true);
         texto.SetActive(true);
+        PararTiempo = true;
     }
     public void ActualizarPuntuacion()
     {
@@ -57,4 +64,19 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("mejorPuntuacion", mejorPuntuacion);
         }
     }
+    public void Update()
+
+     {
+        if(PararTiempo == false)
+        {
+            tiempo += Time.deltaTime;
+            int minutos = (int)tiempo / 60;
+            int segundos = (int)tiempo % 60;
+
+            textoTiempo.text = minutos + ":" + segundos;
+
+        }
+        
+    }
 }
+
